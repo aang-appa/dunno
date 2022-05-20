@@ -12,4 +12,6 @@ public interface IJoueurService {
 	public List<Joueur> afficherJoueursParPosteEtTaille(Poste poste, float taille);
 
 	public List<Joueur> afficherJoueurDuMatchParDivisionEtPoste(Division division, Poste poste, Integer idMatch);
+	
+	public void afficherJoueurPolyvalants();
 }

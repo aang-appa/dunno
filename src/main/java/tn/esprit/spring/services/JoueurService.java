@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Division;
@@ -69,15 +70,29 @@ public class JoueurService implements IJoueurService {
 			List<Equipe> equipes = match.getEquipes();
 			
 			for(int i = 0; i < equipes.size(); i++) {
-				for(int j = 0; j < equipes.getJoueurs().size(); j++) {
-					if (equipes.getJoueurs().get(i).getPoste() == poste && equipes.getJoueurs().get(i).getDivision() == division) {
-						playersToReturn.add(equipes.getJoueurs().get(i));
+				for(int j = 0; j < equipes.get(i).getJoueurs().size(); j++) {
+					if (equipes.get(i).getJoueurs().get(j).getPoste() == poste && equipes.get(i).getDivision() == division) {
+						playersToReturn.add(equipes.get(i).getJoueurs().get(j));
 					}
 				}
 			}
 			
 		}
 		return playersToReturn;
+	}
+	
+	@Scheduled(fixedRate = 10000)
+	@Override
+	public void afficherJoueurPolyvalants() {
+		List<Joueur> joueurs = joueurRepository.findAll();
+		
+		for(int i = 0; i < joueurs.size(); i++) {
+			Joueur j = joueurs.get(i);
+			if (j.getPoste() == Poste.DEFENSEUR && j.getNbButsEnCarriere() >= 20 && j.isBlessure() == false) {
+				System.out.println("Le joueur " + j.getNom() + "est polyvalants");
+				
+			}
+		}
 	}
 
 }

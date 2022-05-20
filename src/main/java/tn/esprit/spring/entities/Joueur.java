@@ -3,9 +3,11 @@ package tn.esprit.spring.entities;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,7 +46,7 @@ public class Joueur {
 	
 	int nbButsEnCarriere;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@ToString.Exclude
 	@JsonIgnore
 	Equipe equipe;
