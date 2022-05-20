@@ -35,7 +35,7 @@ public class MatchFootball {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long idMatch;
+	Integer idMatch;
 	
 	String libelle; 
 	String pays;

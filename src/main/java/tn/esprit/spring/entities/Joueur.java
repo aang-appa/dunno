@@ -33,7 +33,7 @@ public class Joueur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long idJoueur;
+	Integer idJoueur;
 	
 	String nom;
 	
