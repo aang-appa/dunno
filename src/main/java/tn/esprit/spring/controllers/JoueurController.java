@@ -28,13 +28,13 @@ public class JoueurController {
 		return joueurService.ajouterJoueurEtAffecterEquipe(joueur, idEquipe);
 	}
 	
-	@GetMapping("/afficher/{poste}/{taille}")
+	@GetMapping("/afficher1/{poste}/{taille}")
 	@ResponseBody
 	public List<Joueur> afficherJoueurParPosteEtTaille(@PathVariable("poste") Poste poste, @PathVariable("taille") float taille) {
 		return joueurService.afficherJoueursParPosteEtTaille(poste, taille);
 	}
 	
-	@GetMapping("/afficher/{division}/{poste}")
+	@GetMapping("/afficher2/{division}/{poste}")
 	@ResponseBody
 	public List<Joueur> afficherJoueurDuMatchParDivisionEtPoste(@PathVariable("division") Division division, @PathVariable("poste") Poste poste, @PathVariable("idMatch") Integer idMatch) {
 		return joueurService.afficherJoueurDuMatchParDivisionEtPoste(division, poste, idMatch);
